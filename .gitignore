@@ -1,0 +1,6 @@
+### ECLIPSE ###
+.settings
+.classpath
+.factorypath
+.project
+bin/
