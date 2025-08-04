@@ -1,4 +1,4 @@
-package juego;
+package modelo;
 
 // Esta clase representa al jugador del juego
 public class Jugador {

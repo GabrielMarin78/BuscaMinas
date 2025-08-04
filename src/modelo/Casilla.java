@@ -1,9 +1,8 @@
-package juego;
+package modelo;
 
 // Esta clase representa una sola casilla del tablero del juego
-public class Casilla {
+public class Casilla extends ElementoDelTablero {
     private boolean tieneMina;
-    private boolean descubierta;
     private boolean marcada;
     private int minasAlrededor;
 
@@ -22,16 +21,6 @@ public class Casilla {
     // Coloca una mina en esta casilla
     public void colocarMina() {
         this.tieneMina = true;
-    }
-
-    // Verifica si la casilla ya ha sido descubierta
-    public boolean estaDescubierta() {
-        return descubierta;
-    }
-
-    // Marca la casilla como descubierta
-    public void descubrir() {
-        this.descubierta = true;
     }
 
     // Verifica si la casilla está marcada por el jugador
@@ -53,7 +42,14 @@ public class Casilla {
     public void incrementarMinasAlrededor() {
         this.minasAlrededor++;
     }
+    
+    @Override
+    // Marca la casilla como descubierta
+    public void descubrir() {
+        this.descubierta = true;
+    }
 
+    @Override
     // Devuelve el símbolo que se debe mostrar para esta casilla
     public String mostrar() {
         if (marcada) return "F";          // Marcada con bandera

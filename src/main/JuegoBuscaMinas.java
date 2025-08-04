@@ -1,5 +1,6 @@
-package juego;
+package main;
 
+import modelo.*;
 import java.util.Scanner;
 
 // Clase principal con el método main para iniciar el juego desde la consola
