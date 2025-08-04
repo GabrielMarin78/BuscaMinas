@@ -72,7 +72,7 @@ public class Tablero {
         casillas[fila][col].descubrir();
 
         if (casillas[fila][col].tieneMina()) {
-            return false; // Pierde el jugador
+            return false;
         }
 
         if (casillas[fila][col].getMinasAlrededor() == 0) {
@@ -94,6 +94,7 @@ public class Tablero {
     }
 
     public void mostrarTablero() {
+    	System.out.println("");
         System.out.print("  ");
         for (int j = 0; j < columnas; j++) {
             System.out.print(j + " ");

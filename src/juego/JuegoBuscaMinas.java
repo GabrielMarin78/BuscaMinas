@@ -7,7 +7,8 @@ public class JuegoBuscaMinas {
         try (Scanner entrada = new Scanner(System.in)) {
 			Tablero tablero = new Tablero();
 			boolean jugando = true;
-
+			
+			System.out.println("<<< Bienvenido al BUSCAMINAS >>>");
 			while (jugando) {
 			    tablero.mostrarTablero();
 			    System.out.println("\nIngresa una acción:" +
@@ -24,19 +25,19 @@ public class JuegoBuscaMinas {
 			    if (accion.equalsIgnoreCase("d")) {
 			        boolean continuar = tablero.descubrir(fila, columna);
 			        if (!continuar) {
-			            System.out.println("¡BOOM! Has perdido.");
+			            System.out.println("\n¡BOOM! Has perdido.");
 			            tablero.mostrarTablero();
 			            break;
 			        }
 			        if (tablero.juegoGanado()) {
-			            System.out.println("¡Felicidades! Has ganado.");
+			            System.out.println("\n¡Felicidades! ¡Has ganado!");
 			            tablero.mostrarTablero();
 			            break;
 			        }
 			    } else if (accion.equalsIgnoreCase("m")) {
 			        tablero.marcar(fila, columna);
 			    } else {
-			        System.out.println("Acción no válida.");
+			        System.out.println("\nAcción no válida.");
 			    }
 			}
 		} catch (NumberFormatException e) {
