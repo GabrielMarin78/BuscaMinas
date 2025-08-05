@@ -1,10 +1,12 @@
 package modelo;
 
 import java.util.Random;
+import java.io.Serializable;
 
 // Esta clase representa el tablero de juego, con sus casillas y lógica de juego
-public class Tablero {
-    private final int FILAS = 10;
+public class Tablero implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private final int FILAS = 10;
     private final int COLUMNAS = 10;
     private final int MINAS = 10;
 
@@ -71,11 +73,14 @@ public class Tablero {
     }
 
     // Descubre una casilla. Si es una mina, se pierde el juego
-    public boolean descubrir(int fila, int col) {
-        if (!esValido(fila, col) || casillas[fila][col].estaDescubierta()) {
+    public boolean descubrir(int fila, int col) throws CasillaYaDescubiertaException {
+        if (!esValido(fila, col)) {
             return true;
         }
 
+        if (casillas[fila][col].estaDescubierta()) {
+            throw new CasillaYaDescubiertaException("\nLa casilla ya fue descubierta.");
+        }
         casillas[fila][col].descubrir();
 
         if (casillas[fila][col].tieneMina()) {
@@ -87,7 +92,9 @@ public class Tablero {
             for (int[] dir : direcciones()) {
                 int ni = fila + dir[0], nj = col + dir[1];
                 if (esValido(ni, nj)) {
+                	try {
                     descubrir(ni, nj);
+                	} catch (CasillaYaDescubiertaException ignored) {}
                 }
             }
         }

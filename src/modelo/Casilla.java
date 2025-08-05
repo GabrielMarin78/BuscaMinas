@@ -1,7 +1,7 @@
 package modelo;
 
 // Esta clase representa una sola casilla del tablero del juego
-public class Casilla extends ElementoDelTablero {
+public class Casilla extends ElementoDelTablero implements Mostrable {
     private boolean tieneMina;
     private boolean marcada;
     private int minasAlrededor;

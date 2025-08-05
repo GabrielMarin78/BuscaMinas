@@ -1,7 +1,10 @@
 package modelo;
 
+import java.io.Serializable;
+
 // Esta clase representa al jugador del juego
-public class Jugador {
+public class Jugador implements Serializable {
+	private static final long serialVersionUID = 1L;
 	// Atributos de la clase 'Jugador'
     private String nombre;
     private int puntaje;
